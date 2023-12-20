@@ -2,5 +2,9 @@
   "item.weezo.weezo_item": "Weezo",
   "block.weezo.weezo_block": "Weezo Block",
   "block.weezo.nuts_block": "Nuts Block",
+  "item.weezo.weezo_sword": "Weezo Sword",
+  "item.weezo.weezo_ore_item": "Weezo Ore",
+  "item.weezo.weezo_pickaxe": "Weezo Pickaxe",
+  "item.weezo.weezo_hoe": "Weezo Hoe",
   "itemGroup.weezo_tab": "Weezo Tab"
 }

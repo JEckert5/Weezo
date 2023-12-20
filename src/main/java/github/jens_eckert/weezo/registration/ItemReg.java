@@ -1,36 +1,56 @@
 package github.jens_eckert.weezo.registration;
 
 import github.jens_eckert.weezo.WeezoMod;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import github.jens_eckert.weezo.items.WeezoIngot;
+import github.jens_eckert.weezo.items.WeezoItem;
+import github.jens_eckert.weezo.items.WeezoOreItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import static github.jens_eckert.weezo.registration.CreativeTabReg.addToTab;
+
 public class ItemReg {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, WeezoMod.MODID);
 
-    public static final RegistryObject<Item> WEEZO_ITEM = CreativeTabReg.addToTab(ITEMS.register("weezo_item",
-            () -> new Item(new Item.Properties()
-                    .stacksTo(16)
-                    .food(new FoodProperties.Builder()
-                            .nutrition(5)
-                            .saturationMod(0.2f)
-                            .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 200, 2), 2f)
-                            .build())
-                    .rarity(Rarity.EPIC)
-            )
-    ));
+    // FOOD
+    public static final RegistryObject<Item> WEEZO_ITEM = addToTab(
+            ITEMS.register("weezo_item", WeezoItem::new),
+            CreativeModeTabs.FOOD_AND_DRINKS);
 
-    public static final RegistryObject<BlockItem> WEEZO_BLOCK_ITEM = CreativeTabReg.addToTab(ITEMS.register("weezo_block_item",
+    // BLOCKS
+    public static final RegistryObject<BlockItem> WEEZO_BLOCK_ITEM = addToTab(ITEMS.register("weezo_block",
             () -> new BlockItem(BlockReg.WEEZO_BLOCK.get(), new Item.Properties().rarity(Rarity.RARE))
-    ));
+    ), CreativeModeTabs.BUILDING_BLOCKS);
 
-    public static final RegistryObject<BlockItem> NUTS_BLOCK_ITEM = CreativeTabReg.addToTab(ITEMS.register("nuts_block_item",
+    public static final RegistryObject<BlockItem> NUTS_BLOCK_ITEM = addToTab(ITEMS.register("nuts_block",
             () -> new BlockItem(BlockReg.NUTS_BLOCK.get(), new Item.Properties())
-    ));
+    ), CreativeModeTabs.BUILDING_BLOCKS);
+
+
+    // TOOLS
+    public static final RegistryObject<SwordItem> WEEZO_SWORD = addToTab(ITEMS.register("weezo_sword",
+            () -> new SwordItem(ModTierReg.WEEZO, 10, 3f, new Item.Properties())
+    ), CreativeModeTabs.COMBAT);
+
+    public static final RegistryObject<PickaxeItem> WEEZO_PICKAXE = addToTab(ITEMS.register("weezo_pickaxe",
+            () -> new PickaxeItem(ModTierReg.WEEZO, 2, 1.2f, new Item.Properties())
+    ), CreativeModeTabs.TOOLS_AND_UTILITIES);
+
+    public static final RegistryObject<HoeItem> WEEZO_HOE = addToTab(ITEMS.register("weezo_hoe",
+            () -> new HoeItem(ModTierReg.WEEZO, 1, 1.1f, new Item.Properties())
+    ), CreativeModeTabs.TOOLS_AND_UTILITIES);
+
+
+    // INGREDIENTS
+    public static final RegistryObject<Item> WEEZO_ORE_ITEM = addToTab(
+            ITEMS.register("weezo_ore_item", WeezoOreItem::new),
+            CreativeModeTabs.INGREDIENTS
+    );
+
+    public static final RegistryObject<Item> WEEZO_INGOT = addToTab(
+            ITEMS.register("weezo_ingot", WeezoIngot::new),
+            CreativeModeTabs.INGREDIENTS
+    );
 }

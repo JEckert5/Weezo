@@ -11,7 +11,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "weezo:weezo_block_item"
+          "name": "weezo:weezo_ore_item"
         }
       ],
       "conditions": [

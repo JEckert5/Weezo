@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "weezo:nuts_block_item"
+          "name": "weezo:nuts_block"
         }
       ],
       "conditions": [
