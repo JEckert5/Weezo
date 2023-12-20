@@ -14,7 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ItemReg {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, WeezoMod.MODID);
 
-    public static final RegistryObject<Item> WEEZO_ITEM = ITEMS.register("weezo_item",
+    public static final RegistryObject<Item> WEEZO_ITEM = CreativeTabReg.addToTab(ITEMS.register("weezo_item",
             () -> new Item(new Item.Properties()
                     .stacksTo(16)
                     .food(new FoodProperties.Builder()
@@ -24,9 +24,13 @@ public class ItemReg {
                             .build())
                     .rarity(Rarity.EPIC)
             )
-    );
+    ));
 
-    public static final RegistryObject<BlockItem> WEEZO_BLOCK_ITEM = ITEMS.register("weezo_block_item",
+    public static final RegistryObject<BlockItem> WEEZO_BLOCK_ITEM = CreativeTabReg.addToTab(ITEMS.register("weezo_block_item",
             () -> new BlockItem(BlockReg.WEEZO_BLOCK.get(), new Item.Properties().rarity(Rarity.RARE))
-    );
+    ));
+
+    public static final RegistryObject<BlockItem> NUTS_BLOCK_ITEM = CreativeTabReg.addToTab(ITEMS.register("nuts_block_item",
+            () -> new BlockItem(BlockReg.NUTS_BLOCK.get(), new Item.Properties())
+    ));
 }

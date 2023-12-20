@@ -1,4 +1,6 @@
 {
   "item.weezo.weezo_item": "Weezo",
-  "block.weezo.weezo_block": "Weezo Block"
+  "block.weezo.weezo_block": "Weezo Block",
+  "block.weezo.nuts_block": "Nuts Block",
+  "itemGroup.weezo_tab": "Weezo Tab"
 }

@@ -1,0 +1,49 @@
+package github.jens_eckert.weezo.registration;
+
+import github.jens_eckert.weezo.WeezoMod;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
+
+@Mod.EventBusSubscriber(modid = WeezoMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+public class CreativeTabReg {
+    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, WeezoMod.MODID);
+
+    public static final List<Supplier<? extends ItemLike>> TAB_ITEMS = new ArrayList<>();
+
+    public static final RegistryObject<CreativeModeTab> WEEZO_TAB = TABS.register("weezo_tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.weezo_tab"))
+                    .icon(ItemReg.WEEZO_ITEM.get()::getDefaultInstance)
+                    .displayItems((displayParameters, output) -> {
+                        TAB_ITEMS.forEach(i -> output.accept(i.get()));
+                    })
+                    .build()
+    );
+
+    public static <T extends Item> RegistryObject<T> addToTab(RegistryObject<T> itemLike) {
+        TAB_ITEMS.add(itemLike);
+        return itemLike;
+    }
+
+    @SubscribeEvent
+    public static void buildTabs(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ItemReg.NUTS_BLOCK_ITEM);
+            event.accept(ItemReg.WEEZO_BLOCK_ITEM);
+        }
+    }
+}

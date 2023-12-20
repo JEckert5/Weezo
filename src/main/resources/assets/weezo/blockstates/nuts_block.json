@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "weezo:block/nuts_block"
+    }
+  }
+}
