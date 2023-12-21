@@ -1,9 +1,7 @@
 package github.jens_eckert.weezo.registration;
 
 import github.jens_eckert.weezo.WeezoMod;
-import github.jens_eckert.weezo.items.WeezoIngot;
-import github.jens_eckert.weezo.items.WeezoItem;
-import github.jens_eckert.weezo.items.WeezoOreItem;
+import github.jens_eckert.weezo.items.*;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,20 +12,20 @@ import static github.jens_eckert.weezo.registration.CreativeTabReg.addToTab;
 public class ItemReg {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, WeezoMod.MODID);
 
-    // FOOD
+    // ???
     public static final RegistryObject<Item> WEEZO_ITEM = addToTab(
             ITEMS.register("weezo_item", WeezoItem::new),
-            CreativeModeTabs.FOOD_AND_DRINKS);
+            CreativeModeTabs.FOOD_AND_DRINKS
+    );
 
     // BLOCKS
-    public static final RegistryObject<BlockItem> WEEZO_BLOCK_ITEM = addToTab(ITEMS.register("weezo_block",
-            () -> new BlockItem(BlockReg.WEEZO_BLOCK.get(), new Item.Properties().rarity(Rarity.RARE))
+    public static final RegistryObject<BlockItem> WEEZO_BLOCK_ITEM = addToTab(
+            ITEMS.register("weezo_block", WeezoBlockItem::new
     ), CreativeModeTabs.BUILDING_BLOCKS);
 
-    public static final RegistryObject<BlockItem> NUTS_BLOCK_ITEM = addToTab(ITEMS.register("nuts_block",
-            () -> new BlockItem(BlockReg.NUTS_BLOCK.get(), new Item.Properties())
+    public static final RegistryObject<BlockItem> NUTS_BLOCK_ITEM = addToTab(
+            ITEMS.register("nuts_block", NutsBlockItem::new
     ), CreativeModeTabs.BUILDING_BLOCKS);
-
 
     // TOOLS
     public static final RegistryObject<SwordItem> WEEZO_SWORD = addToTab(ITEMS.register("weezo_sword",
@@ -41,7 +39,6 @@ public class ItemReg {
     public static final RegistryObject<HoeItem> WEEZO_HOE = addToTab(ITEMS.register("weezo_hoe",
             () -> new HoeItem(ModTierReg.WEEZO, 1, 1.1f, new Item.Properties())
     ), CreativeModeTabs.TOOLS_AND_UTILITIES);
-
 
     // INGREDIENTS
     public static final RegistryObject<Item> WEEZO_ORE_ITEM = addToTab(

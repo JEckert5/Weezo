@@ -4,8 +4,6 @@ import github.jens_eckert.weezo.WeezoMod;
 import github.jens_eckert.weezo.blocks.NutsBlock;
 import github.jens_eckert.weezo.blocks.WeezoBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
